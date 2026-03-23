@@ -2,31 +2,13 @@
 
 <?php 
 
-$feedback =[
+$sql = 'SELECT * FROM feedback';
 
+$result = mysqli_query($conn, $sql);
 
-  [
-    'id' => 1,
-    'email' => 'john@example.com',
-    'name' => 'John Doe',
-    'body' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!',
-    'date' => '2024-01-15'
-  ],
-  [
-    'id' => 2,
-    'email' => 'jane@example.com',
-    'name' => 'Jane Smith',
-    'body' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!',
-    'date' => '2024-01-16'
-  ],
-  [
-    'id' => 3,
-    'email' => 'bob@example.com',
-    'name' => 'Bob Johnson',
-    'body' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!',
-    'date' => '2024-01-17'
-  ]
-];
+$feedback = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+var_dump($feedback)
 
 ?>
 
@@ -46,7 +28,7 @@ $feedback =[
      <?php echo $item['body'] ?>
      <div class="text-secondary mt2">
 
-     by <?php echo $item['name'] ?>
+     by <?php echo $item['name'] ?> on <?php echo $item['date'] ?>
      </div>
      </div>
    </div>
